@@ -1,17 +1,24 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { createOrder } from '../actions/orderActions';
 import CheckoutSteps from '../components/CheckoutSteps';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
+import { ORDER_CREATE_RESET } from '../constants/orderConstants';
 
 export default function PlaceOrderScreen() {
   const cart = useSelector((state) => state.cart);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!cart.paymentMethod) {
-      navigate('/payment');
-    }
-  }, [cart.paymentMethod, navigate]);
+  //   useEffect(() => {
+  //     if (!cart.paymentMethod) {
+  //       navigate('/payment');
+  //     }
+  //   }, [cart.paymentMethod, navigate]);
+
+  const orderCreate = useSelector((state) => state.orderCreate);
+  const { loading, success, error, order } = orderCreate;
 
   const toPrice = (num) => Number(num.toFixed(2)); // 5.123 => "5.12" => 5.12
   cart.itemsPrice = toPrice(
@@ -20,9 +27,21 @@ export default function PlaceOrderScreen() {
   cart.shippingPrice = cart.itemsPrice > 100 ? toPrice(0) : toPrice(10);
   cart.taxPrice = toPrice(0.1 * cart.itemsPrice);
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
+  const dispatch = useDispatch();
   const placeOrderHandler = () => {
     // TODO: dispatch place order action
+    dispatch(createOrder({ ...cart, orderItems: cart.cartItems })); //we put all the items in the cartItems in orederItems
   };
+
+  useEffect(() => {
+    if (!cart.paymentMethod) {
+      navigate('/payment');
+    }
+    if (success) {
+      navigate(`/order/${order._id}`);
+      dispatch({ type: ORDER_CREATE_RESET });
+    }
+  }, [dispatch, order, navigate, success, cart.paymentMethod]);
   return (
     <div>
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
@@ -124,6 +143,8 @@ export default function PlaceOrderScreen() {
                   Place Order
                 </button>
               </li>
+              {loading && <LoadingBox></LoadingBox>}
+              {error && <MessageBox variant="danger">{error}</MessageBox>}
             </ul>
           </div>
         </div>

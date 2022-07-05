@@ -5,6 +5,7 @@ import { signout } from './actions/userActions';
 import CartScreen from './screens/CartScreen';
 
 import HomeScreen from './screens/HomeScreen';
+import OrderScreen from './screens/OrderScreen';
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import ProductScreen from './screens/ProductScreen';
@@ -29,7 +30,7 @@ function App() {
         <header className="row">
           <div>
             <Link className="brand" to="/">
-              amazona
+              Shopit
             </Link>
           </div>
           <div>
@@ -68,6 +69,7 @@ function App() {
             />
             <Route path="/payment" element={<PaymentMethodScreen />} />
             <Route path="/placeorder" element={<PlaceOrderScreen />} />
+            <Route path="/order/:id" element={<OrderScreen />}></Route>
             <Route path="/register" element={<RegisterScreen />}></Route>
           </Routes>
         </main>
