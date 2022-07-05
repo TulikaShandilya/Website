@@ -5,8 +5,11 @@ import { signout } from './actions/userActions';
 import CartScreen from './screens/CartScreen';
 
 import HomeScreen from './screens/HomeScreen';
+import PaymentMethodScreen from './screens/PaymentMethodScreen';
+import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import ProductScreen from './screens/ProductScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import ShippingAddressScreen from './screens/ShippingAddressScreen';
 import SigninScreen from './screens/SigninScreen';
 
 function App() {
@@ -39,7 +42,7 @@ function App() {
             {userInfo ? (
               <div className="dropdown">
                 <Link to="#">
-                  {userInfo.name} <i className="fa fa-caret-down"></i>
+                  {userInfo.name} <i className="fa-solid fa-caret-down"></i>
                 </Link>
                 <ul className="dropdown-content">
                   <Link to="#signout" onClick={signoutHandler}>
@@ -59,6 +62,12 @@ function App() {
             <Route path="/cart/:id" element={<CartScreen />}></Route>
             <Route path="/cart" element={<CartScreen />} />
             <Route path="/signin" element={<SigninScreen />}></Route>
+            <Route
+              path="/signin/shipping"
+              element={<ShippingAddressScreen />}
+            />
+            <Route path="/payment" element={<PaymentMethodScreen />} />
+            <Route path="/placeorder" element={<PlaceOrderScreen />} />
             <Route path="/register" element={<RegisterScreen />}></Route>
           </Routes>
         </main>

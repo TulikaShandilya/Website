@@ -97,20 +97,20 @@ button.block {
   width: 100%;
 }
 select {
-  border: 1px solid rgb(202, 27, 27);
+  /* border: 1px solid rgb(202, 27, 27); */
   font-size: 1.6rem;
-  width: 50px;
+  width: 100px;
 }
 /*Header*/
 header a {
-  padding: 1rem;
+  /* padding: 0.1rem; */
   color: whitesmoke;
   margin: 2rem;
 }
 
 a.brand {
   color: white;
-  font-size: 3rem;
+  font-size: 2.7rem;
   font-weight: bold;
 }
 a.brand:hover {
@@ -118,7 +118,7 @@ a.brand:hover {
 }
 .badge {
   /* border: 1px solid black; */
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 700;
   border-radius: 50%;
   background-color: white;
@@ -255,12 +255,13 @@ img.small {
 }
 .form label {
   margin: 1rem 0;
-  display: block;
+  /* display: block; */
 }
 /* Dropdown */
 .dropdown {
   display: inline-block;
   position: relative;
+  padding: 0.5rem;
 }
 .dropdown-content {
   position: absolute;
@@ -271,9 +272,28 @@ img.small {
   z-index: 1;
   background-color: rgb(245, 86, 118);
   margin: 0;
-  margin-top: 0.4rem;
-  border-radius: 0.5rem;
+  margin-top: 0.3rem;
+  /* border-radius: 0.5rem; */
 }
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+/* Checkout Steps */
+.checkout-steps > div {
+  border-top: 0.3rem #c0c0c0 solid;
+  margin-top: 1rem;
+  color: #c0c0c0;
+  flex: 1;
+  padding: 1rem;
+  font-weight: bold;
+}
+.checkout-steps > div.active {
+  border-top-color: rgb(245, 86, 118);
+  color: rgb(245, 86, 118);
+}
+
+/*Shipping address*/
+input {
+  font-size: 1.5rem;
 }
