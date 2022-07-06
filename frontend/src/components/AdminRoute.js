@@ -12,13 +12,8 @@ export default function AdminRoute({ component: Component, ...rest }) {
     <Routes>
       <Route
         {...rest}
-        render={(props) =>
-          userInfo && userInfo.isAdmin ? (
-            //   <Component {...props}></Component>
-            <Outlet />
-          ) : (
-            <Navigate to="/signin" />
-          )
+        render={() =>
+          userInfo && userInfo.isAdmin ? <Outlet /> : <Navigate to="/signin" />
         }
       ></Route>
     </Routes>

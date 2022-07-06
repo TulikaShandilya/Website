@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import { signout } from './actions/userActions';
+import AdminRoute from './components/AdminRoute';
 import PrivateRoute from './components/PrivateRoute';
 import CartScreen from './screens/CartScreen';
 
@@ -10,6 +11,7 @@ import OrderHistoryScreen from './screens/OrderHistoryScreen';
 import OrderScreen from './screens/OrderScreen';
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
+import ProductListScreen from './screens/ProductListScreen';
 import ProductScreen from './screens/ProductScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import RegisterScreen from './screens/RegisterScreen';
@@ -89,27 +91,36 @@ function App() {
           </div>
         </header>
         <main>
-          <Routes>
-            <Route path="/" element={<HomeScreen />} exact></Route>
-            <Route path="/product/:id" element={<ProductScreen />}></Route>
-            <Route path="/cart/:id" element={<CartScreen />}></Route>
-            <Route path="/cart" element={<CartScreen />} />
-            <Route path="/signin" element={<SigninScreen />}></Route>
-            <Route
-              path="/signin/shipping"
-              element={<ShippingAddressScreen />}
-            />
-            <Route path="/payment" element={<PaymentMethodScreen />} />
-            <Route path="/placeorder" element={<PlaceOrderScreen />} />
-            <Route path="/order/:id" element={<OrderScreen />}></Route>
-            <Route path="/profile" element={<ProfileScreen />} />
+          <Fragment>
+            <Routes>
+              <Route path="/" element={<HomeScreen />} exact></Route>
+              <Route
+                path="/product/:id"
+                element={<ProductScreen />}
+                exact
+              ></Route>
+              <Route path="/cart/:id" element={<CartScreen />}></Route>
+              <Route path="/cart" element={<CartScreen />} />
+              <Route path="/signin" element={<SigninScreen />}></Route>
+              <Route
+                path="/signin/shipping"
+                element={<ShippingAddressScreen />}
+              />
+              <Route path="/payment" element={<PaymentMethodScreen />} />
+              <Route path="/placeorder" element={<PlaceOrderScreen />} />
+              <Route path="/order/:id" element={<OrderScreen />}></Route>
+              <Route path="/profile" element={<ProfileScreen />} />
 
-            <Route
-              path="/orderhistory"
-              element={<OrderHistoryScreen />}
-            ></Route>
-            <Route path="/register" element={<RegisterScreen />}></Route>
-          </Routes>
+              <Route
+                path="/orderhistory"
+                element={<OrderHistoryScreen />}
+              ></Route>
+              <Route path="/register" element={<RegisterScreen />}></Route>
+              <Route element={<ProductListScreen />}>
+                <Route path="/productlist" element={<AdminRoute />} />
+              </Route>
+            </Routes>
+          </Fragment>
         </main>
         <footer className="row center">All right reserved</footer>
       </div>
