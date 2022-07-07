@@ -8,6 +8,7 @@ import CartScreen from './screens/CartScreen';
 
 import HomeScreen from './screens/HomeScreen';
 import OrderHistoryScreen from './screens/OrderHistoryScreen';
+import OrderListScreen from './screens/OrderListScreen';
 import OrderScreen from './screens/OrderScreen';
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
@@ -75,16 +76,10 @@ function App() {
                 </Link>
                 <ul className="dropdown-content">
                   <li>
-                    <Link to="/dashboard">Dashboard</Link>
-                  </li>
-                  <li>
                     <Link to="/productlist">Products</Link>
                   </li>
                   <li>
                     <Link to="/orderlist">Orders</Link>
-                  </li>
-                  <li>
-                    <Link to="/userlist">Users</Link>
                   </li>
                 </ul>
               </div>
@@ -124,6 +119,9 @@ function App() {
               <Route path="/register" element={<RegisterScreen />}></Route>
               <Route element={<ProductListScreen />}>
                 <Route path="/productlist" element={<AdminRoute />} />
+              </Route>
+              <Route element={<OrderListScreen />}>
+                <Route path="/orderlist" element={<AdminRoute />} />
               </Route>
             </Routes>
           </Fragment>
