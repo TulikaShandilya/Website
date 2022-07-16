@@ -88,8 +88,7 @@ export default function PlaceOrderScreen() {
                         </div>
 
                         <div>
-                          {item.qty} x Rs{item.price} = Rs
-                          {item.qty * item.price}
+                          {item.qty} x ${item.price} = ${item.qty * item.price}
                         </div>
                       </div>
                     </li>
@@ -108,19 +107,19 @@ export default function PlaceOrderScreen() {
               <li>
                 <div className="row">
                   <div>Items</div>
-                  <div>Rs{cart.itemsPrice.toFixed(2)}</div>
+                  <div>${cart.itemsPrice.toFixed(2)}</div>
                 </div>
               </li>
               <li>
                 <div className="row">
                   <div>Shipping</div>
-                  <div>Rs{cart.shippingPrice.toFixed(2)}</div>
+                  <div>${cart.shippingPrice.toFixed(2)}</div>
                 </div>
               </li>
               <li>
                 <div className="row">
                   <div>Tax</div>
-                  <div>Rs{cart.taxPrice.toFixed(2)}</div>
+                  <div>${cart.taxPrice.toFixed(2)}</div>
                 </div>
               </li>
               <li>
@@ -129,7 +128,7 @@ export default function PlaceOrderScreen() {
                     <strong> Order Total</strong>
                   </div>
                   <div>
-                    <strong>Rs{cart.totalPrice.toFixed(2)}</strong>
+                    <strong>${cart.totalPrice.toFixed(2)}</strong>
                   </div>
                 </div>
               </li>

@@ -65,7 +65,7 @@ function ProductScreen(props) {
                     numReviews={product.numReviews}
                   ></Rating>
                 </li>
-                <li>Price : Rs{product.price}</li>
+                <li>Price : ${product.price}</li>
                 <li>
                   Description : <p>{product.description}</p>
                 </li>
@@ -77,7 +77,7 @@ function ProductScreen(props) {
                   <li>
                     <div className="row">
                       <div>Price</div>
-                      <div className="price">Rs{product.price}</div>
+                      <div className="price">${product.price}</div>
                     </div>
                   </li>
                   <li>
